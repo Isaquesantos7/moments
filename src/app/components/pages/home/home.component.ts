@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { NgFor, NgIf } from '@angular/common';
+
 import { environment } from '../../../../environment/environment';
 import { MomemtsService } from '../../../services/momemts.service';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Moment } from '../../../Moment';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +16,20 @@ import { NgFor, NgIf } from '@angular/common';
     NgFor,
     NgIf,
     RouterLink,
-    DatePipe
+    DatePipe,
+    FontAwesomeModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 
 export class HomeComponent {
+  public faSearch = faSearch;
+  public search__: string = '';
+
   public allMoments: Moment[] = [];
-  public moments: Moment[] = []
+  public moments: Moment[] = [];
+
   public baseApiUrl = environment.baseApiUrl;
 
   constructor(private momentService: MomemtsService) {}
@@ -40,5 +47,12 @@ export class HomeComponent {
       this.moments = data;
 
     });
+  }
+
+  public search(e: Event) {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.moments = this.allMoments.filter(item => item.title.toLowerCase().includes(value));
   }
 }
