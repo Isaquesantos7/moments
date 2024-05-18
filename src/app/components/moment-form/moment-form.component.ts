@@ -1,7 +1,8 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
+import { Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, Validators, FormControl} from '@angular/forms';
+import { Moment } from '../../Moment';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { FormGroup, ReactiveFormsModule, Validators, FormControl} from '@angular
 
 export class MomentFormComponent {
   @Input() btnText!: string;
+  @Output() onSubmit = new EventEmitter<Moment>();
 
   momentForm! : FormGroup;
 
@@ -53,6 +55,7 @@ export class MomentFormComponent {
       return;
     } else {
       console.log(this.momentForm.value);
+      this.onSubmit.emit(this.momentForm.value);
     }
   }
 
