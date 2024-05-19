@@ -15,7 +15,14 @@ export class MomemtsService {
 
   constructor(private http: HttpClient) {}
 
+  getMoment(id: number): Observable<Response<Moment>> {
+    
+    const url: string = `${this.apiUrl}/${id}`;
+    return this.http.get<Response<Moment>>(url);
+  }
+
   getMoments(): Observable<Response<Moment[]>> {
+
     return this.http.get<Response<Moment[]>>(this.apiUrl)
   }
 
