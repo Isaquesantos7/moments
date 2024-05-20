@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -23,7 +23,7 @@ import { Moment } from '../../../Moment';
   styleUrl: './home.component.css'
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   public faSearch = faSearch;
   public search__: string = '';
 
