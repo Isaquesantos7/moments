@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgIf, NgFor } from '@angular/common';
 
 import { MomemtsService } from '../../../services/momemts.service';
 import { Moment } from '../../../Moment';
@@ -8,10 +9,16 @@ import { environment } from '../../../../environment/environment';
 import { MessagesService } from '../../../services/messages.service';
 import { faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-moment',
   standalone: true,
-  imports: [FontAwesomeModule, RouterLink],
+  imports: [
+    FontAwesomeModule, 
+    RouterLink,
+    NgIf,
+    NgFor,
+  ],
   templateUrl: './moment.component.html',
   styleUrl: './moment.component.css'
 })
