@@ -12,7 +12,7 @@
             <div class="moment" *ngFor="let moment of moments">
                 <img src="{{baseApiUrl}}uploads/{{moment.image}}" alt="{{ moment.title }}">
                 <h3>{{ moment.title }}</h3>
-                <p class="date">Em: {{ moment.create_at }}</p>
+                <p class="date">Em: {{ moment.created_at }}</p>
                 <p>Comentários: {{ moment.comments!.length }}</p>
                 <p><a routerLink="moments/{{ moment.id }}">Detalhes</a></p>
             </div>
